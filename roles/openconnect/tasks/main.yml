@@ -21,6 +21,12 @@
     force: no   # Don't overwrite this file, since credentials were put it manually
   become: true
 
+- name: Copy sudoers for Global Protect config  # Not to input sudo pass every time
+  copy:
+    src: "{{ role_path }}/files/sudoers.d/openconnect"
+    dest: "/etc/sudoers.d/openconnect"
+  become: true
+
 # Manually init Pass cmd password manager
 #   gpg --full-gen-key
 #   pass init [insert email from gpg key generation here]

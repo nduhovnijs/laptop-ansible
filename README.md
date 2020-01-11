@@ -1,4 +1,4 @@
-# haven
+# Laptop configuration with Ansible
 Manage laptop with Ansible.
 Adapted for Ubuntu 18.04.
 Few points are described in comments as manual actions.

@@ -17,7 +17,7 @@ $ sudo apt-add-repository --yes --update ppa:ansible/ansible
 $ sudo apt install ansible
 ```
 
-3. Go through code - few points are described as manual actions in comments.
+3. Go through code - few points are described as manual actions in comments
 
 4. Run as 
 ```

@@ -18,6 +18,7 @@
   copy:
     src: "{{ role_path }}/files/gp-okta/gp-okta.conf"
     dest: /opt/gp-okta/gp-okta.conf
+    force: no   # Don't overwrite this file, since credentials were put it manually
   become: true
 
 # Manually init Pass cmd password manager

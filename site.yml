@@ -1,0 +1,9 @@
+- hosts: laptop
+  roles:
+    - ansible-setup
+    - common
+    - golang
+    - gnome
+    - openconnect
+  vars:
+    home_dir: /home/nduhovnijs

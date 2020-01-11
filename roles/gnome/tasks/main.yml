@@ -1,0 +1,11 @@
+- name: Install Gnome must haves
+  apt: 
+    name:
+      - chrome-gnome-shell # for Gnome extensions add-on
+      - gnome-tweaks
+  become: true
+
+- name: Configure available keyboard layouts in Gnome
+  dconf:
+    key: "/org/gnome/desktop/input-sources/sources"
+    value: "[('xkb', 'lv'), ('xkb', 'ru')]"

@@ -1,0 +1,36 @@
+- name: Run the equivalent of "apt-get update" as a separate step
+  apt:
+    update_cache: yes
+  become: yes
+
+- name: Upgrade all packages to the latest version
+  apt:
+    name: "*"
+    state: latest
+    force_apt_get: yes
+  become: yes
+
+- name: Install 1st party software (via Apt)
+  apt: 
+    name:
+      - guake # Toggle terminal by F12 key
+      - mc
+      - pass  # Command line tool to store few passwords (unlocked by Gnome)
+  become: true
+
+- name: Install 3rd party software (via Snap)
+  snap:
+    name:
+      - bitwarden # Desktop password manager
+      # Manually install Google Chrome
+      # Manually install Microsoft Teams
+      - onlyoffice-desktopeditors # Open source document editor with near-100% compatibility to MS Office
+      - spotify
+      - telegram-desktop
+  become: yes
+
+- name: Install 3rd party software (via Snap with classic confinement)
+  snap:
+    name:
+      - slack
+  become: yes

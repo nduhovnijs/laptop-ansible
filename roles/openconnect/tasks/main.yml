@@ -1,0 +1,39 @@
+# On Ubuntu 18.04 install patched Openconnect first: https://github.com/dlenski/openconnect
+# (on later Ubuntu versions Palo Alto related implementation already included in vanilla Openconnect)
+
+- name: Create Global Protect wrapper directory
+  file:
+    path: /opt/gp-okta
+    state: directory
+  become: true
+
+- name: Copy Global Protect wrapper 
+  copy:
+    src: "{{ role_path }}/files/gp-okta/gp-okta.py"
+    dest: /opt/gp-okta/gp-okta.py
+    mode: 0755
+  become: true
+
+- name: Copy Global Protect config 
+  copy:
+    src: "{{ role_path }}/files/gp-okta/gp-okta.conf"
+    dest: /opt/gp-okta/gp-okta.conf
+  become: true
+
+# Manually init Pass cmd password manager
+#   gpg --full-gen-key
+#   pass init [insert email from gpg key generation here]
+#   pass insert okta
+
+- name: Install Python dependencies for Global Protect wrapper
+  apt: 
+    name:
+      - python3-lxml
+    state: present
+  become: true
+
+- name: Add a line to a file if the file does not exist, without passing regexp
+  lineinfile:
+    path: "{{ home_dir }}/.bashrc"
+    line: alias vpn='pass okta | /opt/gp-okta/gp-okta.py /opt/gp-okta/gp-okta.conf'
+    create: yes

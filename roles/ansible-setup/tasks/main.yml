@@ -1,0 +1,4 @@
+- name: Install dependencies for Ansible
+  apt: 
+    name: ['python-psutil']
+  become: true

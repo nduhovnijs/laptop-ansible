@@ -26,6 +26,7 @@
       # Manually install Microsoft Teams
       - onlyoffice-desktopeditors # Open source document editor with near-100% compatibility to MS Office
       - spotify
+      - standard-notes
       - telegram-desktop
   become: yes
 

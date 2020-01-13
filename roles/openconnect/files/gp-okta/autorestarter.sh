@@ -9,13 +9,14 @@ cleanup ()
 
 trap cleanup SIGINT SIGTERM
 
-pass okta | /opt/gp-okta/gp-okta.py /opt/gp-okta/gp-okta.conf
+./launch.sh
 
 while true; do
     status=$(ps -ef | grep gp-okta | grep -v grep)
     if [ -z "$status" ]; then
         sleep 5
-        pass okta | /opt/gp-okta/gp-okta.py /opt/gp-okta/gp-okta.conf
+	./launch.sh
+        #pass okta | /opt/gp-okta/gp-okta.py /opt/gp-okta/gp-okta.conf
     fi
     sleep 1
 done

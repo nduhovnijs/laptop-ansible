@@ -1,3 +1,6 @@
+- apt_repository:
+    repo: ppa:linuxuprising/guake
+
 - name: Run the equivalent of "apt-get update" as a separate step
   apt:
     update_cache: yes
@@ -18,7 +21,7 @@
       - guake # Toggle terminal by F12 key
       - mc
       - pass  # Command line tool to store few passwords (unlocked by Gnome)
-      # Manually install RClone: https://rclone.org/install/
+      - python-pip
       - python3-gpg # Dependency for Dropbox installation
       - shotwell # Photo gallery app
   become: true

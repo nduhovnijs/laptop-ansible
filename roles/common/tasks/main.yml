@@ -1,5 +1,6 @@
 - apt_repository:
     repo: ppa:linuxuprising/guake
+  become: yes
 
 - name: Run the equivalent of "apt-get update" as a separate step
   apt:
@@ -17,30 +18,24 @@
   apt: 
     name:
       - curl
-      - gthumb # Photo gallery app
       - guake # Toggle terminal by F12 key
       - mc
-      - pass  # Command line tool to store few passwords (unlocked by Gnome)
-      - python-pip
-      - python3-gpg # Dependency for Dropbox installation
-      - shotwell # Photo gallery app
+      # - pass  # Command line tool to store few passwords (unlocked by Gnome) - commenting out (was needed for openconnect)
   become: true
 
 - name: Install 3rd party software (via Snap)
   snap:
     name:
-      - bitwarden # Desktop password manager
-      # Manually install Dropbox
+      # Manually install Mega
       # Manually install Google Chrome
       # Manually install Microsoft Teams
+      # Manually install Slack
       - onlyoffice-desktopeditors # Open source document editor with near-100% compatibility to MS Office
-      - spotify
       - standard-notes
-      - telegram-desktop
   become: yes
 
-- name: Install 3rd party software (via Snap with classic confinement)
+- name: Install Visual Studio Code
   snap:
-    name:
-      - slack
-  become: yes
+    name: code
+    classic: yes
+  become: true

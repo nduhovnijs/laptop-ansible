@@ -1,7 +1,6 @@
 - name: Install Gnome must haves
   apt: 
     name:
-      - chrome-gnome-shell # for Gnome extensions add-on
       - gnome-tweaks
   become: true
 

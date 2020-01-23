@@ -4,6 +4,6 @@
     - common
     - golang
     - gnome
-    - openconnect
+    #- openconnect # install official GlobalProtect instead
   vars:
     home_dir: /home/nduhovnijs

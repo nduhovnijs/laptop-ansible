@@ -26,11 +26,9 @@
 - name: Install 3rd party software (via Snap)
   snap:
     name:
-      # Manually install Mega
       # Manually install Google Chrome
       # Manually install Microsoft Teams
       # Manually install Slack
-      - onlyoffice-desktopeditors # Open source document editor with near-100% compatibility to MS Office
       - standard-notes
   become: yes
 

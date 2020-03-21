@@ -19,17 +19,27 @@
     name:
       - curl
       - guake # Toggle terminal by F12 key
-      - mc
+      # - mc
       # - pass  # Command line tool to store few passwords (unlocked by Gnome) - commenting out (was needed for openconnect)
   become: true
 
-- name: Install 3rd party software (via Snap)
+- name: Install 3rd party software (via Snap Stable)
+  snap:
+    name:
+      # Manually install Google Chrome
+      # Manually install Microsoft Teams
+      # Manually install Slack
+      - onlyoffice-desktopeditors
+  become: yes
+
+- name: Install 3rd party software (via Snap Edge)
   snap:
     name:
       # Manually install Google Chrome
       # Manually install Microsoft Teams
       # Manually install Slack
       - standard-notes
+    channel: latest/edge
   become: yes
 
 - name: Install Visual Studio Code
@@ -37,3 +47,14 @@
     name: code
     classic: yes
   become: true
+
+- name: add local /bin directory
+  file:
+    path: "{{ home_dir }}/bin"
+    state: directory
+
+- name: add local /bin to path
+  lineinfile:
+    path: "{{ home_dir }}/.bashrc"
+    line: PATH=$PATH:{{ home_dir }}/bin
+    create: yes

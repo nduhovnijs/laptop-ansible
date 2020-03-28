@@ -30,6 +30,7 @@
       # Manually install Microsoft Teams
       # Manually install Slack
       - onlyoffice-desktopeditors
+      - nextcloud
   become: yes
 
 - name: Install 3rd party software (via Snap Edge)
@@ -42,9 +43,11 @@
     channel: latest/edge
   become: yes
 
-- name: Install Visual Studio Code
+- name: Install 3rd party software (via Snap Classic)
   snap:
-    name: code
+    name: 
+      - code
+      - pycharm-community
     classic: yes
   become: true
 

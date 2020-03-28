@@ -19,6 +19,10 @@
     name:
       - curl
       - guake # Toggle terminal by F12 key
+      - libsnmp-dev
+      - python3-distutils
+      - python3-pip
+      - python3-virtualenv
       # - mc
       # - pass  # Command line tool to store few passwords (unlocked by Gnome) - commenting out (was needed for openconnect)
   become: true

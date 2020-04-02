@@ -34,7 +34,7 @@
       # Manually install Microsoft Teams
       # Manually install Slack
       - onlyoffice-desktopeditors
-      - nextcloud
+      - telegram-desktop
   become: yes
 
 - name: Install 3rd party software (via Snap Edge)

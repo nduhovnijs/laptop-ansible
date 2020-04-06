@@ -55,13 +55,13 @@
     classic: yes
   become: true
 
-- name: add local /bin directory
+- name: add local ~/.local/bin directory
   file:
-    path: "{{ home_dir }}/bin"
+    path: "{{ home_dir }}/.local/bin"
     state: directory
 
-- name: add local /bin to path
+- name: add local ~/.local/bin to path
   lineinfile:
     path: "{{ home_dir }}/.bashrc"
-    line: PATH=$PATH:{{ home_dir }}/bin
+    line: PATH=$PATH:{{ home_dir }}/.local/bin
     create: yes

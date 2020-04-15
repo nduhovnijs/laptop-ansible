@@ -2,6 +2,10 @@
     repo: ppa:linuxuprising/guake
   become: yes
 
+- apt_repository:
+    repo: ppa:nextcloud-devs/client
+  become: yes
+ 
 - name: Run the equivalent of "apt-get update" as a separate step
   apt:
     update_cache: yes
@@ -14,12 +18,13 @@
     force_apt_get: yes
   become: yes
 
-- name: Install 1st party software (via Apt)
+- name: Install software via Apt
   apt: 
     name:
       - curl
       - guake # Toggle terminal by F12 key
       - libsnmp-dev
+      - nextcloud-client
       - python3-distutils
       - python3-pip
       - python3-virtualenv
@@ -27,7 +32,7 @@
       # - pass  # Command line tool to store few passwords (unlocked by Gnome) - commenting out (was needed for openconnect)
   become: true
 
-- name: Install 3rd party software (via Snap Stable)
+- name: Install software via Snap Stable
   snap:
     name:
       # Manually install Google Chrome
@@ -37,7 +42,7 @@
       - telegram-desktop
   become: yes
 
-- name: Install 3rd party software (via Snap Edge)
+- name: Install software via Snap Edge
   snap:
     name:
       # Manually install Google Chrome
@@ -47,7 +52,7 @@
     channel: latest/edge
   become: yes
 
-- name: Install 3rd party software (via Snap Classic)
+- name: Install software via Snap Classic
   snap:
     name: 
       - code

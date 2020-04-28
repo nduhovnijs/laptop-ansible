@@ -1,6 +1,7 @@
 - name: Install Gnome must haves
   apt: 
     name:
+      - chrome-gnome-shell  # Integration with Firefox add-on
       - gnome-tweaks
   become: true
 

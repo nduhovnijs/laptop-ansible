@@ -14,8 +14,10 @@
   apt: 
     name:
       - curl
-      - guake # Toggle terminal by F12 key
+      - default-jre
+      - guake  # Toggle terminal by F12 key
       - mc
+      - libqt5webkit5  # Needed for GlobalProtect
       # - pass  # Command line tool to store few passwords (unlocked by Gnome) - commenting out (was needed for openconnect)
   become: true
 
@@ -26,7 +28,6 @@
       # Manually install Microsoft Teams
       - bitwarden
       - onlyoffice-desktopeditors
-      - telegram-desktop
   become: yes
 
 - name: Install software via Snap Edge
@@ -45,13 +46,7 @@
     classic: yes
   become: true
 
-- name: add local ~/.local/bin directory
+- name: add local ~/bin directory (Ubuntu adds to path automatically)
   file:
-    path: "{{ home_dir }}/.local/bin"
+    path: "{{ home_dir }}/bin"
     state: directory
-
-- name: add local ~/.local/bin to path
-  lineinfile:
-    path: "{{ home_dir }}/.bashrc"
-    line: PATH=$PATH:{{ home_dir }}/.local/bin
-    create: yes

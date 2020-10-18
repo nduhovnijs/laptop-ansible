@@ -1,52 +1,22 @@
-- name: Run the equivalent of "apt-get update" as a separate step
-  apt:
-    update_cache: yes
-  become: yes
-
-- name: Upgrade all packages to the latest version
-  apt:
-    name: "*"
-    state: latest
-    force_apt_get: yes
-  become: yes
-
 - name: Install software via Apt
   apt: 
     name:
       - curl
       - default-jre
-      - guake  # Toggle terminal by F12 key
+      - git
       - mc
       - libqt5webkit5  # Needed for GlobalProtect
-      # - pass  # Command line tool to store few passwords (unlocked by Gnome) - commenting out (was needed for openconnect)
-  become: true
-
-- name: Install software via Snap Stable
-  snap:
-    name:
-      # Manually install Google Chrome
-      # Manually install Microsoft Teams
-      - bitwarden
-      - onlyoffice-desktopeditors
-  become: yes
-
-- name: Install software via Snap Edge
-  snap:
-    name:
-      - standard-notes
-    channel: latest/edge
-  become: yes
-
-- name: Install software via Snap Classic
-  snap:
-    name: 
-      - code
-      - pycharm-community
-      - slack
-    classic: yes
   become: true
 
 - name: add local ~/bin directory (Ubuntu adds to path automatically)
   file:
     path: "{{ home_dir }}/bin"
     state: directory
+
+- name: Disable auto-switch for Bluetooth profiles (to stay on A2DP)
+  lineinfile:
+    path: "/etc/pulse/default.pa"
+    regexp: 'load-module module-bluetooth-policy'
+    line: 'load-module module-bluetooth-policy auto_switch=0'
+    create: yes
+  become: true

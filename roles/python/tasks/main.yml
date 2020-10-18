@@ -1,8 +1,0 @@
-- name: Install python libraries via Apt
-  apt: 
-    name:
-      - python3-distutils
-      - python3-pip
-      - python3-virtualenv
-      - libsnmp-dev
-  become: true

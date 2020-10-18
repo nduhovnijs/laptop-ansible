@@ -1,12 +1,25 @@
 # Install Golang manually first - https://golang.org/dl/
 
-- name: add Golang and Golang's bin to systems path
+- name: add Golang settings
   lineinfile:
     path: "{{ home_dir }}/.bashrc"
-    line: PATH=$PATH:/usr/local/go/bin:{{ home_dir }}/go/bin
+    line: export GOROOT=/usr/local/go
     create: yes
 
-- name: create go directory
-  file:
-    path: "{{ home_dir }}/go/src"
-    state: directory
+- name: add Golang settings
+  lineinfile:
+    path: "{{ home_dir }}/.bashrc"
+    line: export GOPATH=/home/nduhovnijs/go
+    create: yes
+
+- name: add Golang settings
+  lineinfile:
+    path: "{{ home_dir }}/.bashrc"
+    line: export PATH=$GOPATH/bin:$PATH
+    create: yes
+
+- name: add Golang settings
+  lineinfile:
+    path: "{{ home_dir }}/.bashrc"
+    line: export PATH=$PATH:$GOROOT/bin
+    create: yes

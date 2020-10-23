@@ -2,24 +2,24 @@
 
 - name: add Golang settings
   lineinfile:
-    path: "{{ home_dir }}/.bashrc"
+    path: "{{ home_dir }}/.profile"
     line: export GOROOT=/usr/local/go
     create: yes
 
 - name: add Golang settings
   lineinfile:
-    path: "{{ home_dir }}/.bashrc"
+    path: "{{ home_dir }}/.profile"
     line: export GOPATH=/home/nduhovnijs/go
     create: yes
 
 - name: add Golang settings
   lineinfile:
-    path: "{{ home_dir }}/.bashrc"
+    path: "{{ home_dir }}/.profile"
     line: export PATH=$GOPATH/bin:$PATH
     create: yes
 
 - name: add Golang settings
   lineinfile:
-    path: "{{ home_dir }}/.bashrc"
+    path: "{{ home_dir }}/.profile"
     line: export PATH=$PATH:$GOROOT/bin
     create: yes

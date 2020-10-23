@@ -1,6 +1,7 @@
 - name: Install software via Apt
   apt: 
     name:
+      - build-essential
       - curl
       - default-jre
       - git
@@ -20,3 +21,12 @@
     line: 'load-module module-bluetooth-policy auto_switch=0'
     create: yes
   become: true
+
+- name: Add a script for switching between Bluetooth profiles
+  copy:
+    src: "{{ role_path }}/files/bluetooth_profile.sh"
+    dest: "{{ home_dir }}/bin/bluetooth_profile.sh"
+    mode: 0755
+  become: true
+
+  
